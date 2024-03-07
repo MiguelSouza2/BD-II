@@ -1,0 +1,20 @@
+npm install -g expo-cli
+
+npm: node
+
+install: install burrao
+
+-g: usuario global
+
+expo-cli: frameworik (roda cll)
+
+
+
+
+npx create-expo-app [NomeProjeto]
+
+npm: node
+
+create: criar burrao
+
+expo-app : frameworik (roda cll 2)
