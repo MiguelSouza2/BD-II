@@ -55,9 +55,24 @@ create table fornecedores(
 	cidade VARCHAR(50) NOT NULL
 )
 
-create telefoneFornecedores(
+create table telefoneFornecedores(
 	codTelefone INTEGER(10) NOT NULL PRIMARY KEY,
 	telefoneFornecedores VARCHAR(30) NOT NULL,
-	codInterno INTEGER(15) NOT NULL,
-	FOREIGN KEY(codInterno) REFERENCES fornecedores(codInterno)
+	códigoInterno INTEGER(15) NOT NULL,
+	FOREIGN KEY(códigoInterno) REFERENCES fornecedores(códigoInterno)
+)
+
+create table Internacionais(
+	transporte VARCHAR(40) NOT NULL,
+	país VARCHAR(30) NOT NULL,
+	moeda VARCHAR(30) NOT NULL,
+	códigoInterno INTEGER(15) NOT NULL PRIMARY KEY,
+	FOREIGN KEY (códigoInterno) REFERENCES fornecedores(códigoInterno)
+)
+
+create table Nacionais(
+	cidade VARCHAR(50) NOT NULL,
+	CNPJ INTEGER(15) NOT NULL PRIMARY KEY,
+	códigoInterno INTEGER(15) NOT NULL,
+	FOREIGN KEY (códigoInterno) REFERENCES fornecedores(códigoInterno)
 )
