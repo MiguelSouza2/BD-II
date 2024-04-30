@@ -1,0 +1,41 @@
+aula-data
+
+-- exercicio 1:
+	
+	SELECT nome, DAY(dataNasc), MONTHNAME(dataNasc), YEAR(dataNasc) FROM funcionario;
+
+-- exercicio 2:
+
+SELECT DISTINCT MONTHNAME(dataNasc) FROM funcionario ORDER BY MONTH(dataNasc);
+
+-- exercicio 3:
+
+SELECT id_funcionario, nome FROM funcionario WHERE YEAR(datanasc) LIKE 1987;
+
+-- exercicio 4: 
+
+SELECT nome, DAY(dataNasc) FROM funcionario WHERE YEAR(dataNasc) LIKE 1988;
+
+-- exercicio 5:
+
+SELECT nome, (DATEDIFF(CURDATE(), dataNasc)/365) FROM funcionario;
+
+-- exercicio 6:
+
+SELECT nome, id_funcionario, YEAR(dataNasc) FROM funcionario WHERE MONTH(dataNasc) BETWEEN 3 AND 5 AND YEAR(dataNasc) = 1990;
+
+-- exercicio 7:
+
+SELECT nome, YEAR(dataNasc) FROM funcionario WHERE estado = 'SP';
+
+-- exercicio 8: 
+
+SELECT nome, YEAR(dataNasc) FROM funcionario WHERE YEAR(dataNasc) < 1990;
+
+-- exercicio 9: 
+
+SELECT DISTINCT cidade, estado FROM funcionario WHERE YEAR(dataNasc) > 1989;
+
+-- exercicio 10:
+
+SELECT * FROM funcionario WHERE YEAR(dataNasc) BETWEEN 1988 AND 1990;
