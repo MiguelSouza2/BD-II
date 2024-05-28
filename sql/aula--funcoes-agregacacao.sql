@@ -1,0 +1,62 @@
+-- Exercícios funções de agregação:
+
+
+-- exercício 1:
+
+SELECT MAX(salario) AS Maximo, MIN(salario) AS minimo FROM funcionario;
+
+
+-- exercício 2:
+
+SELECT SUM(salario) AS SOMA FROM funcionario WHERE nome LIKE '%Cunha';
+
+
+-- exercício 3: 
+
+SELECT AVG(salario) AS MEDIA FROM funcionario WHERE email LIKE '%yahoo%';
+
+
+-- exercício 4:
+
+SELECT COUNT(id_funcionario) AS QTD FROM funcionario WHERE email NOT LIKE '%br' 
+
+
+-- exercício 5:
+
+SELECT MIN(dataNasc) AS MINima FROM funcionario;
+
+
+-- exercício 6: 
+
+SELECT MAX(dataNasc) AS Maior_nascimento FROM funcionario;
+
+
+-- exercício 7:
+
+SELECT COUNT(id_funcionario) AS QTD_VALINHOS FROM funcionario WHERE cidade = 'Valinhos';
+
+
+-- exercício 8:
+
+SELECT SUM(salario) FROM funcionario WHERE cidade = 'Campinas';
+
+
+-- exercício 9:
+
+SELECT AVG(salario) FROM funcionario WHERE cidade = 'São Paulo';
+
+
+-- exercício 10:
+
+SELECT SUM(salario) FROM funcionario WHERE nome LIKE 'Ana%';
+
+
+-- exercício 11:
+
+
+SELECT COUNT(id_funcionario) FROM funcionario WHERE nome LIKE 'Luis%';
+
+
+-- exercício 12:
+
+SELECT MAX(salario) AS Maximo, MIN(salario) AS minimo FROM funcionario WHERE endereço = 'Av. São Paulo%';
