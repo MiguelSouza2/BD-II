@@ -3,7 +3,7 @@ create database locadora_de_autos
 create table categoria (
 	preço INTEGER(20) NOT NULL,
 	descrição VARCHAR(30) NOT NULL,
-	códigoCategoria INTEGER(20) NOT NULL PRIMARY KEY
+	códigoCategoria INTEGER NOT NULL PRIMARY KEY
 )
 
 create table usuário (
@@ -25,6 +25,11 @@ create table telefone (
 	código_telefone INTEGER NOT NULL
 )
 
+create table email (
+	nome VARCHAR(30) NOT NULL,
+	código INTEGER(30) NOT NULL PRIMARY KEY
+)
+
 alter table telefone drop código_telefone;
 alter table telefone add código_telefone INTEGER NOT NULL PRIMARY KEY
 
@@ -36,6 +41,36 @@ create table carro (
 	marca VARCHAR(30) NOT NULL,
 	ano INTEGER(10) NOT NULL,
 	cor VARCHAR(30) NOT NULL,
-	FOREIGN KEY (códigoCategoria) REFERENCES categoria (códigoCategoria)
+	códigoCategoria INTEGER NOT NULL,
+	FOREIGN KEY (códigoCategoria) REFERENCES categoria(códigoCategoria)
 )
 
+create table oficina (
+	nome VARCHAR(50) NOT NULL, 
+	email VARCHAR(50) NOT NULL,
+	rua VARCHAR(30) NOT NULL,
+	número INTEGER(5) NOT NULL,
+	bairro VARCHAR(40) NOT NULL,
+	cidade VARCHAR(40) NOT NULL,
+	CNPJ INTEGER NOT NULL PRIMARY KEY
+)
+
+create table aloca (
+	nº_chassi INTEGER NOT NULL,
+	CNH VARCHAR(50) NOT NULL,
+	hora INTEGER NOT NULL,
+	dia INTEGER NOT NULL,
+	FOREIGN KEY (nº_chassi) REFERENCES carro(nº_chassi),
+	FOREIGN KEY (CNH) REFERENCES usuário(CNH),
+)
+
+create table manutenção(
+	valor INTEGER NOT NULL,
+	dia INTEGER NOT NULL,
+	descrição VARCHAR(50) NOT NULL,
+	código_manutenção INTEGER NOT NULL PRIMARY KEY,
+	CNPJ INTEGER NOT NULL,
+	nº_chassi INTEGER NOT NULL,
+	FOREIGN KEY (nº_chassi) REFERENCES carro(nº_chassi),
+	FOREIGN KEY (CNPJ) REFERENCES oficina(CNPJ)
+)

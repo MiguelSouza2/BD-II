@@ -1,0 +1,65 @@
+create database MIGUEL_ISACK;
+
+create table turma(
+	tipoAtividade VARCHAR(250) NOT NULL,
+	data_inicial INTEGER(10) NOT NULL,
+	data_final INTEGER(10) NOT NULL,
+	numero_alunos INTEGER(30),
+	horário_aula INTEGER(30) NOT NULL,
+	RG INTEGER NOT NULL,
+	codigo_turma INTEGER NOT NULL,
+	FOREIGN KEY (RG) REFERENCES instrutor(RG)
+);
+
+alter table turma drop codigo_turma;
+
+alter table turma add (codigo_matricula INTEGER NOT NULL, FOREIGN KEY (codigo_matricula) REFERENCES AlunoMonitor(codigo_matricula));
+
+alter table turma add codigo_turma INTEGER NOT NULL PRIMARY KEY;
+
+create table AlunoMonitor(
+	codigo_matricula INTEGER NOT NULL PRIMARY KEY,
+	nome VARCHAR(50) NOT NULL
+);
+
+alter table quarto add numero INTEGER NOT NULL PRIMARY KEY;
+
+create table aluno(
+	nome VARCHAR(50) NOT NULL,
+	altura INTEGER NOT NULL,
+	peso INTEGER NOT NULL,
+	data_nasc INTEGER(10) NOT NULL,
+	data_matricula INTEGER(10) NOT NULL,
+	rua VARCHAR(70) NOT NULL,
+	bairro VARCHAR(70) NOT NULL,
+	cidade VARCHAR(70) NOT NULL,
+	codigo_matricula INTEGER NOT NULL PRIMARY KEY
+);
+
+
+create table instrutor(
+	RG INTEGER NOT NULL PRIMARY KEY,
+	data_nasc INTEGER(10) NOT NULL,
+	nome VARCHAR(50) NOT NULL,
+	titulação VARCHAR(50) NOT NULL
+);
+
+create table email(
+	codigo_email INTEGER(50) NOT NULL PRIMARY KEY,
+	dominio_email VARCHAR(50) NOT NULL
+);
+
+create table telefone(
+	codigo_telefone INTEGER NOT NULL PRIMARY KEY,
+	numero_telefone INTEGER NOT NULL
+);
+
+create table matricula(
+	data_matricula INTEGER(10) NOT NULL,
+	codigo_matricula INTEGER NOT NULL,
+	codigo_turma INTEGER NOT NULL,
+	FOREIGN KEY (codigo_turma) REFERENCES turma(codigo_turma),
+	FOREIGN KEY (codigo_matricula) REFERENCES aluno(codigo_matricula)
+);
+
+alter table matricula add(registro_ausencia VARCHAR(50));

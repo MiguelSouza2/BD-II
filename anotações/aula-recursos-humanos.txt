@@ -145,3 +145,32 @@ INSERT INTO funcionario(
 	'cls@bol.com.br',
 	'1988-04-30'
 );
+
+
+-- Exercício 1: 
+SELECT nome FROM funcionario;
+SELECT salario * 1.30 FROM funcionario;
+
+-- Exercício 2:
+SELECT nome, salario * 0.80 FROM funcionario;
+
+-- Exercício 3:
+SELECT nome, salario FROM funcionario WHERE salario > 1500;
+
+-- Exercício 4:
+SELECT nome, cidade FROM funcionario WHERE NOT cidade='Valinhos';
+
+-- Exercício 5:
+SELECT id_funcionario, cidade FROM funcionario WHERE cidade='Valinhos' OR cidade='Campinas' 
+
+-- Exercício 6;
+SELECT id_funcionario, cargo, salario FROM funcionario WHERE NOT cidade='São Paulo' AND salario >= 1000;
+
+-- Exercício 7: 
+SELECT nome FROM funcionario WHERE cargo IS NULL;
+
+-- Exercício 8:
+SELECT nome, salario FROM funcionario WHERE salario BETWEEN 500 AND 1500;
+
+-- Exercício 9;
+SELECT nome, email FROM funcionario WHERE email LIKE '%@hotmail%';
